@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,31 +18,53 @@
 </head>
 <body>
 
-<header>
+	<header>
 		<div class="container">
 			<div class="row">
 				<nav class="navbar navbar-expand-md navbar-dark"
 					style="background-color: blue">
 					<div>
-						<a href="#" class="navbar-brand">titulo</a>
+						<a href="#" class="navbar-brand">Equipos</a>
 					</div>
 					<ul class="navbar-nav">
-						<li><a href="<%=request.getContextPath()%>/"
-							class="nav-link">home</a></li>
+						<li><a href="<%=request.getContextPath()%>/" class="nav-link">home</a></li>
 					</ul>
 				</nav>
 
 			</div>
 		</div>
 	</header>
-	
+
 	<div class="container">
 		<div class="row">
-			
-		
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Pais</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="i" items="${teams}">
+						<tr>
+							<td><c:out value="${i.id}" /></td>
+							<td><c:out value="${i.name}" /></td>
+							<td><c:out value="${i.getCountry().getName()}" /></td>
+							<td><a
+								href="<%=request.getContextPath()%>/edit?id=<c:out value='${i.id}'/>">Editar</a>
+								&nbsp;&nbsp;&nbsp;&nbsp; <a
+								href="<%=request.getContextPath()%>/delete?id=<c:out value='${i.id}'/>">Eliminar</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+
 		</div>
-	
-	
+
+
 	</div>
 
 </body>

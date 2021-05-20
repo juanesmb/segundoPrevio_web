@@ -12,17 +12,25 @@ public class ConexionPostgreSQL {
 	private Connection c = null;
 	private PreparedStatement pr; //sentencia sql para interactuar con la DB
 	
-	private static final String url = "jdbc:queenie.db.elephantsql.com";
+	/*private static final String host = "queenie.db.elephantsql.com";
 	private static final String dbName = "mnjgxshj";
 	private static final String driver = "org.postgresql.Driver";
 	private static final String userName = "mnjgxshj";
 	private static final String password = "Uzjqo00sxV0W9OzPEB1q3wpoVvGMbbUV";
+	private static final String url = "jdbc:postgresql://" + host + ":5432/" + dbName;*/
+	
+	private static final String host = "database-2.cr5kiddvokid.us-east-2.rds.amazonaws.com";
+	private static final String dbName = "giro";
+	private static final String driver = "org.postgresql.Driver";
+	private static final String userName = "test";
+	private static final String password = "Test2021";
+	private static final String url = "jdbc:postgresql://" + host + ":5432/" + dbName;
 	
 	private ConexionPostgreSQL() {
 		
 		try {
 			Class.forName(driver).newInstance();
-			c = (Connection)DriverManager.getConnection(url+dbName,userName,password);
+			c = (Connection)DriverManager.getConnection(url,userName,password);
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

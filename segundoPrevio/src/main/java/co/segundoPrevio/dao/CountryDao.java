@@ -9,7 +9,7 @@ public interface CountryDao {
 
 	public void insert(Country o) throws SQLException;
 
-	public Country select(int id);
+	public Country select(String id);
 
 	public List<Country> selectAll();
 

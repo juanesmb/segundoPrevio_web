@@ -28,7 +28,7 @@ public class CountryDaoMySQL implements CountryDao {
 	}
 
 	@Override
-	public Country select(int id) {
+	public Country select(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

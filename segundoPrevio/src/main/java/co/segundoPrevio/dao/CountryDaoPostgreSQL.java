@@ -30,9 +30,23 @@ public class CountryDaoPostgreSQL implements CountryDao{
 	}
 
 	@Override
-	public Country select(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Country select(String id) {
+		Country country = null;
+		try {
+			c.setPreparedStatement(SELECT_COUNTRY_BY_SQL);
+			PreparedStatement pr = c.getPreparedStatement();
+			pr.setString(1, id);
+			ResultSet rs = c.query();
+			if(rs.next())
+			{
+				String name = rs.getString("name");
+				country = new Country (id,name);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return country;
 	}
 
 	@Override
