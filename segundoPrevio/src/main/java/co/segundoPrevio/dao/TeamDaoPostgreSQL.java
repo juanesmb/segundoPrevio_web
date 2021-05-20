@@ -59,9 +59,17 @@ public class TeamDaoPostgreSQL implements TeamDao {
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
-		// TODO Auto-generated method stub
-
+	public void delete(String id) throws SQLException 
+	{
+		try {
+			c.setPreparedStatement(DELETE_TEAM_SQL);
+			PreparedStatement pr = c.getPreparedStatement();
+			pr.setString(1, id);
+			c.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

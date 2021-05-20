@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Equipos</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -37,6 +37,7 @@
 
 	<div class="container">
 		<div class="row">
+		<a href="<%= request.getContextPath()%>/newTeam" class="btn btn-success">Agregar Nuevo Equipo</a>
 			<table class="table table-bordered">
 				<thead>
 					<tr>

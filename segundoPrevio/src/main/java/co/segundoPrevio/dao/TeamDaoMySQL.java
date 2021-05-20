@@ -28,7 +28,7 @@ public class TeamDaoMySQL implements TeamDao{
 	}
 
 	@Override
-	public void delete(int id) throws SQLException {
+	public void delete(String id) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}

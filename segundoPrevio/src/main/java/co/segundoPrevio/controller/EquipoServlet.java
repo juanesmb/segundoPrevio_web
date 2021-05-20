@@ -27,13 +27,13 @@ public class EquipoServlet extends HttpServlet {
 
 	private CountryDao countryDao;
 	private TeamDao teamDao;
-	
-    /**
-     * Default constructor. 
-     */
-    public EquipoServlet() {
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * Default constructor.
+	 */
+	public EquipoServlet() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Servlet#init(ServletConfig)
@@ -44,47 +44,69 @@ public class EquipoServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String action = request.getServletPath();
-		
+
 		try {
-			switch(action) {
+			switch (action) {
 			case "/listTeams":
-				ListTeams(request,response);
+				ListTeams(request, response);
+				break;
+			case "/newTeam":
+				showNewTeamForm(request, response);
+				break;
+			case "/delete":
+				eliminarEquipo(request, response);
 				break;
 			default:
-				ListTeams(request,response);
+				ListTeams(request, response);
 				break;
-			
+
 			}
-		}catch(SQLException e)
-		{
+		} catch (SQLException e) {
 			throw new ServletException(e);
 		}
-		
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	private void ListTeams(HttpServletRequest request, HttpServletResponse response) throws ServletException, SQLException, IOException {
+
+	private void ListTeams(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, SQLException, IOException {
 		List<Team> teams = this.teamDao.selectAll();
 		System.out.println(teams.toString());
 		request.setAttribute("teams", teams);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("equipo.jsp");
 		dispatcher.forward(request, response);
-		/*List<Country> countrys = this.countryDao.selectAll();
-		System.out.println(countrys.toString());*/
-		
-		
+		/*
+		 * List<Country> countrys = this.countryDao.selectAll();
+		 * System.out.println(countrys.toString());
+		 */
+	}
+
+	private void showNewTeamForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, SQLException, IOException {
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("registroEquipo.jsp");
+		dispatcher.forward(request, response); 
+	}
+
+	private void eliminarEquipo(HttpServletRequest request, HttpServletResponse response)throws ServletException, SQLException, IOException {
+		String id = request.getParameter("id");
+		this.teamDao.delete(id);
+		response.sendRedirect("listTeams");
 	}
 
 }

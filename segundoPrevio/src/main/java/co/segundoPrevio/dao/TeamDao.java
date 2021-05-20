@@ -12,7 +12,7 @@ public interface TeamDao {
 
 	public List<Team> selectAll();
 
-	public void delete(int id) throws SQLException;
+	public void delete(String id) throws SQLException;
 
 	public void update(Team o) throws SQLException;
 }
