@@ -3,9 +3,11 @@ package co.segundoPrevio.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import co.segundoPrevio.model.Country;
 import co.segundoPrevio.util.ConexionMySQL;
 
-public class DosDao implements Dao2{
+
+public class CountryDaoMySQL implements CountryDao {
 	
 	private ConexionMySQL c;
 	private static final String INSERT_USUARIO_SQL = "INSERT INTO usuario (nombre, email, pais) VALUES (?, ?, ?);";
@@ -13,26 +15,26 @@ public class DosDao implements Dao2{
 	private static final String UPDATE_USUARIO_SQL = "UPDATE usuario SET nombre = ?, email = ?, pais=? WHERE id = ?;";
 	private static final String SELECT_USUARIO_BY_SQL = "SELECT * FROM usuario WHERE id = ?;";
 	private static final String SELECT_ALL_USUARIOS = "SELECT * FROM usuario;";
-	
-	public DosDao()
+
+	public CountryDaoMySQL()
 	{
 		this.c = ConexionMySQL.getConexion();
 	}
 
 	@Override
-	public void insert(Object o) throws SQLException {
+	public void insert(Country o) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Object select(int id) {
+	public Country select(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Object> selectAll() {
+	public List<Country> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -44,9 +46,11 @@ public class DosDao implements Dao2{
 	}
 
 	@Override
-	public void update(Object o) throws SQLException {
+	public void update(Country o) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }

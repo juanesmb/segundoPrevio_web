@@ -3,8 +3,7 @@ package co.segundoPrevio.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface Dao1 {
-
+public interface TeamDao {
 	public void insert(Object o) throws SQLException;
 
 	public Object select(int id);
